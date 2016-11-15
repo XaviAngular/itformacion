@@ -1,0 +1,16 @@
+Ejercicio Angular 2 Dentista
+
+Los clientes llegan y rellenan formulario por tabletas.
+Usar materializecss o bootstrap para el diseño.
+Crear componentes en blanco y navegación por routing.
+Componentes/Plantillas:
+Base/principal del appComponent home.html
+Bienvenida con logo del dentista, información sobre la encuesta, botón empezar.
+Listado con los formularios recibidos, crear .mok de ejemplo con 6 registros, servicios/inyectores/constantes.
+Nuevo registro
+Nombre y apellidos (min 6 caracteres)
+Dni (8 números y 1 letra)
+Edad (max 2 dígitos)
+Alérgico penicilina?
+Ha donado sangre en los últimos 4 meses?
+Cuántas veces se cepilla los dientes al día? Desplegable o barra slider de 0 a 5.
