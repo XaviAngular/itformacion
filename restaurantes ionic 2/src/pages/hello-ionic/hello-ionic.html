@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+  <ion-buttons left>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-buttons>
+    <ion-title>Restaurantes</ion-title>
+  <ion-buttons right>
+      <button ion-button icon-only (click)="showCheckbox()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+   </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+<ion-list>
+<ion-item *ngFor="let restaurante of restaurantes" (click)="itemTapped($event, restaurante)" class="restaurante-item">
+    <ion-thumbnail item-left>
+      <img src="http://vps306727.ovh.net/slim/uploads/{{restaurante.imagen}}" *ngIf="restaurante.imagen && restaurante.imagen !== 'null'" />
+    </ion-thumbnail>
+      <h2>{{restaurante.nombre}}</h2>
+      <p>{{restaurante.direccion}}</p>
+      <button ion-button clear item-right>View</button>
+ </ion-item>
+  </ion-list>
+
+
+</ion-content>

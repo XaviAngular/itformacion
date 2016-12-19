@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle *ngIf="!selectedItem">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Restaurante {{selectedItem.nombre}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+ <ion-card *ngIf="selectedItem" class="selection">
+ <ion-card-header>
+ <img src="http://vps306727.ovh.net/slim/uploads/{{selectedItem.imagen}}" *ngIf="selectedItem.imagen && selectedItem.imagen !== 'null'"/>   
+  </ion-card-header>
+  <ion-card-content> 
+    <ion-list>
+      <ion-item><h4>{{selectedItem.descripcion}}</h4></ion-item>
+      <ion-item><h5>Precio medio: {{selectedItem.precio}}</h5></ion-item> 
+      <ion-item><div [hidden]="!mostrarMapa" #map id="map" style="height: 300px;width: 300px"></div></ion-item> 
+    </ion-list> 
+     
+     
+     <button block ion-button item-right icon-left (click)="openMenu()"><ion-icon name="settings"></ion-icon>Opciones</button>
+      
+
+   </ion-card-content>    
+  </ion-card>  
+</ion-content>

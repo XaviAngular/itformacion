@@ -1,0 +1,77 @@
+<!--
+  Generated template for the EditRestaurante page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+<ion-navbar>
+   <ion-buttons left>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-buttons>
+    <ion-title *ngIf="params">Editar {{restaurante.nombre}}</ion-title>
+    <ion-title *ngIf="!params">{{titulo}}</ion-title>
+     <ion-buttons right>
+    <button ion-button icon-only (click)="getGeo()">
+      <ion-icon name="compass"></ion-icon>
+    </button>
+  </ion-buttons>   
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+<ion-card>
+<ion-card-header>
+   <div class="uploadWrap" *ngIf="!imageChosen && !existeImagen">
+<ion-icon (click)="chooseImage()" name="camera"></ion-icon>
+    </div>
+<div class="img-preview" *ngIf="imageChosen || existeImagen">  
+  <img *ngIf="imageChoosen" (click)="chooseImage()" alt="" src="{{imagePath}}">  
+  <img *ngIf="existeImagen" (click)="chooseImage()" alt="" src="http://vps306727.ovh.net/slim/uploads/{{restaurante.imagen}}">
+</div>
+</ion-card-header>
+ <ion-card-content>
+<form #formRestaurante="ngForm" (ngSubmit)="onSubmit()">
+<ion-list>
+  <ion-item>
+    <ion-label floating>Nombre</ion-label>
+    <ion-input #nombre="ngModel" name="nombre" [(ngModel)]="restaurante.nombre" required type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Dirección</ion-label>
+    <ion-input #direccion="ngModel" name="direccion" [(ngModel)]="restaurante.direccion" required type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Descripción</ion-label>
+    <ion-input #descripcion="ngModel" name="descripcion" [(ngModel)]="restaurante.descripcion" required type="text"></ion-input>
+  </ion-item>
+   <ion-item>
+    <ion-label>Precio</ion-label>
+    <ion-select [(ngModel)]="restaurante.precio" #precio="ngModel" name="precio">
+      <ion-option value="bajo">Bajo</ion-option>
+      <ion-option value="medio">Medio</ion-option>
+      <ion-option value="alto">Alto</ion-option>   
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Latitud</ion-label>
+    <ion-input #latitud="ngModel" [(ngModel)]="restaurante.latitud" name="latitud" readonly type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Longitud</ion-label>
+    <ion-input #longitud="ngModel" [(ngModel)]="restaurante.longitud" name="longitud" readonly type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+  <div [hidden]="!mostrarMapa" #map id="map" style="height: 300px;width: 300px"></div> 
+  </ion-item>
+</ion-list>
+
+<button ion-button full *ngIf="!params" type="submit"[disabled]="!formRestaurante.form.valid">Crear</button>
+<button ion-button full *ngIf="params" type="submit" [disabled]="!formRestaurante.form.valid">Guardar</button>
+
+</form>
+</ion-card-content>
+</ion-card>
+</ion-content>
